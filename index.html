@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f"><meta name="description" content="NOVA School OS untuk SMK 18 LPPM RI Sidareja"><link rel="icon" href="assets/nova-logo.png"><title>NOVA School OS</title>
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="topin"><div class="brand"><img class="nova-logo" src="assets/nova-logo.png" alt="NOVA"><small>SCHOOL OS</small></div><div class="tools"><div class="school-mark" title="SMK 18 LPPM RI Sidareja"><img src="assets/smk18-logo.jpg" alt="Logo SMK 18 LPPM RI Sidareja"></div><button class="icon" onclick="openSearch()" aria-label="Cari">⌕</button><button class="icon" id="themeBtn" onclick="theme()" aria-label="Ubah ke light mode">◐</button></div></div></header>
+<main>
+<section class="hero">
+  <div>
+    <div class="ey">PERSONAL SCHOOL COMMAND CENTER</div>
+    <h1 id="greet">Halo 👋</h1>
+    <div class="muted" id="date"></div>
+  </div>
+  <div class="clock"><b id="clock">--:--</b><span class="muted">sekarang</span></div>
+</section>
+
+<section class="quickbar" aria-label="Akses cepat">
+  <button class="quicklink" onclick="todaySchedule()"><b>📅 Hari ini</b><small>jadwal cepat</small></button>
+  <button class="quicklink" onclick="copySchedule()"><b>📋 Salin Jadwal</b><small>hari ini</small></button>
+  <button class="quicklink" onclick="go('tasks')"><b>✓ Tugas</b><small>checklist</small></button>
+  <button class="quicklink" onclick="focusNote()"><b>🧠 Catatan</b><small>tulis cepat</small></button>
+  <button class="quicklink" onclick="tjktTools()"><b>🌐 TJKT Tools</b><small>alat jaringan</small></button>
+  <button class="quicklink" onclick="pomodoro()"><b>⏱️ Pomodoro</b><small>25 menit</small></button>
+</section>
+
+<section class="cols">
+<div class="card"><div class="head"><h2>📚 Sekarang</h2><span class="status" id="status">memuat</span></div><div id="current"></div></div>
+<div class="card"><div class="head"><h2>➡️ Berikutnya</h2><span class="muted" id="nextDay"></span></div><div class="next" id="next"></div></div>
+</section>
+<section class="card week" id="scheduleCard"><div class="head"><h2>📅 Jadwal Mingguan</h2><span class="muted">pilih hari</span></div><div class="days" id="days"></div><div class="lessons" id="lessons"></div></section>
+<section class="bottom"><div class="card" id="tasks"><div class="head"><h2>✓ Tugas</h2><span class="muted" id="taskmeta"></span></div><div class="tasks" id="tasklist"></div><div class="smallcaps" style="margin-top:3px">Tambah tugas</div><div class="taskcontrols"><select id="taskSubject" aria-label="Pilih mata pelajaran" onchange="updateTaskDays()"><option value="">Pilih mata pelajaran...</option></select><select id="taskDay" aria-label="Pilih hari" disabled><option value="">Pilih mata pelajaran dulu...</option></select></div><div class="addrow"><input id="taskin" placeholder="Tambahkan tugas..." onkeydown="if(event.key==='Enter')addTask()"><button class="add" onclick="addTask()">Tambah</button></div></div><div class="card"><div class="head"><h2>🧠 Catatan Cepat</h2><span class="muted">autosave</span></div><textarea id="note" placeholder="Tulis catatan penting..."></textarea><div class="muted note-hint">Autosave aktif • disimpan di perangkat ini, tanpa akun.</div></div></section>
+</main>
+<footer class="site-footer"><img src="assets/smk18-logo.jpg" alt=""><div><b>SMK 18 LPPM RI Sidareja</b><span>NOVA School OS</span></div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><div class="sheethead"><b id="stitle">Cari NOVA</b><button class="close" onclick="closeModal()">×</button></div><div id="sbody"></div></div></div><div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body></html>
